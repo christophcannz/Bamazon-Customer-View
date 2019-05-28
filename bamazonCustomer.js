@@ -43,7 +43,7 @@ var shoppingCart = function() {
     inquirer.prompt({
         name: "productForPurchase",
         type: "input",
-        message: "Enter the product ID to make your purchase."
+        message: "Enter the product ID to select your desired item."
     }).then(function(responseOne) {
 //==========DB QUERY===================================
         var selection = responseOne.productForPurchase;
@@ -59,7 +59,7 @@ var shoppingCart = function() {
                 inquirer.prompt({
                     name:"quantity",
                     type: "input",
-                    message: "How many products would you like to put in your cart?"
+                    message: "Now, enter the quantity."
                 }).then(function(responseTwo){
 
                     var quantity = responseTwo.quantity;
