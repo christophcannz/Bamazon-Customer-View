@@ -10,3 +10,6 @@ The Bamazon-Customer-View application allows the user to view a selection of 7 p
 ![](./screenshots/quantity.PNG)
 
 3. Customer will then be prompted if inventory is positive and the order can be processed.
+
+4. If inventory is getting low, the customer will also recieve a prompt.
+![](./screenshots/inventoryalert.PNG)

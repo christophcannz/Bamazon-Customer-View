@@ -67,12 +67,14 @@ var shoppingCart = function() {
                         console.log("Alert! Inventory is getting low! There are " + res[0].stock_quantity + " items left.")
                         shoppingCart();
                     } else {
-                        console.log("");
+                        console.log("We have enough product!");
                         console.log(res[0].product_name + " purchased");
                         console.log(quantity + " qty @ $" + res[0].price);
 
                         var newItemQuantity = res[0].stock_quantity - quantity;
-                        connection.query("UPDATE products SET stock_quantity = " + newItemQuantity + "WHERE id= " + res[0].id, function (err, resUpdate) {
+                        // UPDATE products SET stock_quantity=stock_quantity+2 WHERE id=1
+                        var querystring = `UPDATE products SET stock_quantity=newItemQuantity WHERE id=res[0].id`;
+                        connection.query(querystring, function (err, resUpdate) {
                             if (err) throw err;
                             console.log("");
                             console.log("Order Processed.");
