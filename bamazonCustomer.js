@@ -1,7 +1,7 @@
 var mysql = require ("mysql");
 var inquirer = require ("inquirer");
 var Table = require("cli-table2");
-
+// Connect to mySQL =========================
 var connection = mysql.createConnection({
     host: "localHost",
     user: "root",
@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-var display = function() {
+var display = function() { //Create Initial display responses ========
     connection.query("SELECT * FROM products",function(err, res) {
         if (err) throw err;
         console.log("---------------------------");
@@ -20,7 +20,7 @@ var display = function() {
         console.log("");
         console.log("Find your product below");
         console.log("");
-var chart = new Table({
+var chart = new Table({ //Layout Table =====================
         head: ['Product ID', 'Product Description', 'Cost'],
         colWidths: [12, 50, 8],
         colAlign: ["center", "left", "right"],
@@ -29,12 +29,12 @@ var chart = new Table({
             compact: true
         }
     });
-    for (var i = 0; i < res.length; i++) {
+    for (var i = 0; i < res.length; i++) { //Table for loop =========
         chart.push ([res[i].id, res[i].products_name, res[i].price]);
     }
     console.log(chart.toString());
     console.log("");
-    shoppingCart(); //place a function/call here------------
+    shoppingCart(); //Shopping Cart Function called.
     });
     
 };
